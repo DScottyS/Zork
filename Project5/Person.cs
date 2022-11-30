@@ -1,12 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Project5
 {
-    internal class Person : Participant
+    public class Person : Participant
     {
         protected string PlayerName;
 
@@ -24,6 +25,15 @@ namespace Project5
             ParticipantHealth = 100;
             ParticipantDmg = 2;
             ParticipantWeapon = "Fists";
+        }
+
+        public override string ToString()
+        {
+            string info = "";
+
+            info += $"Player Name: {PlayerName}";
+
+            return info;
         }
     }
 }

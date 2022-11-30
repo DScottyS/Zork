@@ -114,7 +114,7 @@ namespace Project5
             IsExit = false;
             HasPlayer = true;
 
-            if (Chance.Next(5) < 1)
+            if (probability.Next(5) < 1)
             {
                 HasWeapon = true; 
             }
@@ -135,7 +135,7 @@ namespace Project5
             IsExit = true;
             HasPlayer = false;
 
-            if (Chance.Next(5) < 1)
+            if (probability.Next(5) < 1)
             {
                 HasWeapon = true;
             }
@@ -144,7 +144,7 @@ namespace Project5
                 HasWeapon = false;
             }
 
-            if (Chance.Next(3) <= 1)
+            if (probability.Next(3) <= 1)
             {
                 HasMonster = true;
             }
@@ -162,6 +162,7 @@ namespace Project5
 
             if (HasPlayer == true && HasWeapon == true && HasMonster == true)
             {
+                HasMonster = true;
                 info += "|P_W_M|  ";
             }
             else if (HasPlayer == true && HasWeapon == true)
@@ -170,6 +171,7 @@ namespace Project5
             }
             else if (HasPlayer == true && HasMonster == true)
             {
+                HasMonster = true;
                 info += "|P___M|  ";
             }
             else if (HasPlayer == true)

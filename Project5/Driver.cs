@@ -20,13 +20,51 @@ namespace Project5
     {
         public static void Main(string[] args)
         {
-            Dungeon newDungeon = new Dungeon();
+            Console.Write("Welcome to game, please leave name: ");
+            //playerName = Console.ReadLine();
+            playerName = "aaa";
+            player = new Person(playerName);
+
+            Console.WriteLine($"Welcome {playerName}! Press any key to start");
+            //Console.ReadKey(false);
+
             newDungeon.CreateNewDungeon();
             Console.WriteLine(newDungeon);
+
+
+            Console.ReadKey();
+            newDungeon.MoveEast();
+            
+            Console.WriteLine(newDungeon);
+            if (newDungeon.tile.HasMonster == true)
+            {
+                EnemySpawnRate();
+                Thread.Sleep(500);
+                BattleSystem();
+            }
+
+            Console.ReadKey();
+            newDungeon.MoveEast();
+
+            Console.WriteLine(newDungeon);
+            if (newDungeon.tile.HasMonster == true)
+            {
+                EnemySpawnRate();
+                Thread.Sleep(500);
+                BattleSystem();
+            }
 
             Console.ReadKey();
             newDungeon.MoveEast();
             Console.WriteLine(newDungeon);
+            if (newDungeon.tile.HasMonster == true)
+            {
+                EnemySpawnRate();
+                Thread.Sleep(500);
+                BattleSystem();
+            }
+
+
 
 
 
@@ -40,6 +78,10 @@ namespace Project5
         }
 
         #region Variables
+        //
+        public static Person player;
+        //
+        public static Dungeon newDungeon = new Dungeon();
         //creates a new monster participant
         public static Participant monster;
         //creates a new weapon item
@@ -48,10 +90,27 @@ namespace Project5
         public static Rucksack playerRucksack = new Rucksack();
         //stores the player's name
         public static string getPlayerName;
+        //
+        public static string playerChoice;
+        //
+        public static Random chance = new Random();
+        //
+        public static int probability;
+        //
+        public static string playerName;
 
         #endregion
 
         #region Methods
+
+        public static void Menu()
+        {
+            
+
+
+
+        }
+
         public static void SpawnSkeleton()
         {
             monster = new Participant();
@@ -80,6 +139,68 @@ namespace Project5
             monster.ParticipantHealth = 30;
             monster.ParticipantWeapon = "Club";
             monster.ParticipantDmg = 6;
+        }
+
+        public static void EnemySpawnRate()
+        {
+            probability = chance.Next(1, 11);
+
+            if (probability <= 6 )
+            {
+                SpawnSkeleton();
+                Console.WriteLine(monster);
+            }
+            else if (probability <= 9 || probability > 7)
+            {
+                SpawnOrc();
+                Console.WriteLine(monster);
+
+            }
+            else if (probability == 10)
+            {
+                SpawnTroll();
+                Console.WriteLine(monster);
+            }
+        }
+
+        public static void BattleSystem()
+        {
+            do
+            {
+                if (chance.Next(1, 11) >= 9)
+                {
+                    Console.WriteLine($"The {monster.ParticipantName} misses!\n");
+                }
+                else
+                {
+                    Console.WriteLine($"The {monster.ParticipantName} strikes!\n");
+                    player.ParticipantHealth -= monster.ParticipantDmg;
+                    Console.WriteLine($"{player.ParticipantName}\nHP: {player.ParticipantHealth}");
+                }
+                Thread.Sleep(1000);
+
+                if (chance.Next(1, 11) == 1)
+                {
+                    Console.WriteLine($"I missed!\n");
+                }
+                else
+                {
+                    Console.WriteLine($"I lunge at the enemy!\n");
+                    monster.ParticipantHealth -= player.ParticipantDmg;
+                    Console.WriteLine($"{monster.ParticipantName}\nHP: {monster.ParticipantHealth}");
+                }
+                Thread.Sleep(1000);
+
+            } while (monster.ParticipantHealth > 0);
+
+            if (monster.ParticipantHealth < 0)
+            {
+                Console.WriteLine($"\nThe mighty {monster.ParticipantName} before me has been slain, I think it's safe to move on\n");
+            }
+            else if (player.ParticipantHealth < 0)
+            {
+                Console.WriteLine($"\nAnother hero has been brought to ruin by these dank catacombs - GAME OVER");
+            }
         }
 
         public static void Anduril()
@@ -111,6 +232,25 @@ namespace Project5
             weapon.Weight = 0.2;
             weapon.Damage = 3;
         }
+
+        public static void ItemSpawnRate()
+        {
+            probability = chance.Next(1, 11);
+
+            if (probability <= 4)
+            {
+                Stick();
+            }
+            else if (probability <= 8 && probability > 4)
+            {
+                Dagger_of_Westernesse();
+            }
+            else if (probability >= 9)
+            {
+                Anduril();
+            }
+        }
+
         #endregion
     }
 }

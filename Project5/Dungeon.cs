@@ -21,11 +21,11 @@ namespace Project5
 {
     public class Dungeon : Tile
     {
-        protected List<Tile> DungeonSize;
+        public List<Tile> DungeonSize;
 
-        protected Random NumberOfTiles = new Random();
+        public Random NumberOfTiles = new Random();
 
-        protected Tile tile;
+        public Tile tile;
 
         public int CurrentTile;
 
@@ -61,24 +61,40 @@ namespace Project5
         {
             DungeonSize[CurrentTile].HasPlayer = false;
             CurrentTile++;
+            tile = DungeonSize[CurrentTile];
             DungeonSize[CurrentTile].HasPlayer = true;
         }
 
         public void MoveWest()
         {
-            DungeonSize[CurrentTile].HasPlayer = false;
-            CurrentTile--;
-            DungeonSize[CurrentTile].HasPlayer = true;
+            try
+            {
+                DungeonSize[CurrentTile].HasPlayer = false;
+                CurrentTile--;
+                tile = DungeonSize[CurrentTile];
+                DungeonSize[CurrentTile].HasPlayer = true;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                CurrentTile++;
+                tile = DungeonSize[CurrentTile];
+                DungeonSize[CurrentTile].HasPlayer = true;
+                Console.WriteLine("I can't go west any further");
+            }
+
         }
 
         public override string ToString()
         {
             string info = "";
 
+            info += "\n";
             foreach (Tile t in DungeonSize)
             {
                 info += t.ToString();
             }
+            info += "\n";
+
 
             return info;
         }
