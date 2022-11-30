@@ -21,10 +21,10 @@ namespace Project5
 {
     public class Participant
     {
-        protected string ParticipantName { get; set; }
-        protected int ParticipantHealth { get; set; }
-        protected int ParticipantDmg { get; set; }
-        protected string ParticipantWeapon { get; set; }
+        public string ParticipantName { get; set; }
+        public int ParticipantHealth { get; set; }
+        public int ParticipantDmg { get; set; }
+        public string ParticipantWeapon { get; set; }
 
         public Participant()
         {

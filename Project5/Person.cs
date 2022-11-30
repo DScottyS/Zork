@@ -8,13 +8,22 @@ namespace Project5
 {
     internal class Person : Participant
     {
-        Item[] BackPack { get; set; }
+        protected string PlayerName;
 
         public Person() : base()
         {
             ParticipantName = "";
             ParticipantHealth = 100;
-            ParticipantDmg = 0;
+            ParticipantDmg = 2;
+            ParticipantWeapon = "Fists";
+        }
+
+        public Person(string playerName)
+        {
+            ParticipantName = playerName;
+            ParticipantHealth = 100;
+            ParticipantDmg = 2;
+            ParticipantWeapon = "Fists";
         }
     }
 }

@@ -9,11 +9,12 @@ namespace Project5
     public class Item
     {
         //the item name
-        protected string Name { get; set; }
+        public string Name { get; set; }
         //the item description
-        protected string Description { get; set; }
+        public string Description { get; set; }
         //the item weight
-        protected double Weight { get; set; }
+        public double Weight { get; set; }
+        public int Damage { get; set; }
 
         /// <summary>
         /// default constructor
@@ -23,6 +24,7 @@ namespace Project5
             Name = "";
             Description = "";
             Weight = 0;
+            Damage = 0;
         }
 
         /// <summary>
@@ -31,11 +33,12 @@ namespace Project5
         /// <param name="name">the name of the item</param>
         /// <param name="description">the description of the item</param>
         /// <param name="weight">the weight of the item</param>
-        public Item(string name, string description, double weight)
+        public Item(string name, string description, double weight, int damage)
         {
             Name = name;
             Description = description;
             Weight = weight;
+            Damage = damage;
         }
 
         /// <summary>
@@ -49,6 +52,7 @@ namespace Project5
             info += $"\nItem Name: {Name}";
             info += $"\nItem Description: {Description}";
             info += $"\nItem Weight: {Weight} lbs.";
+            info += $"\nThis {Name} deals {Damage} DMG per hit";
 
             return info;
         }

@@ -8,5 +8,12 @@ namespace Project5
 {
     public class Stick : Item
     {
+        public Stick()
+        {
+            Name = "Stick";
+            Description = "It's just a stick";
+            Weight = 0.2;
+            Damage = 2;
+        }
     }
 }
