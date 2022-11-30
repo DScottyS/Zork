@@ -8,19 +8,19 @@ namespace Project5
 {
     public class Rucksack
     {
-        private List<Item> Inventory = new List<Item>();
+        private List<Weapon> Inventory = new List<Weapon>();
 
         public Rucksack()
         {
-            Inventory = new List<Item>();
+            Inventory = new List<Weapon>();
         }
 
-        public void Add(Item item)
+        public void Add(Weapon item)
         {
             Inventory.Add(item);
         }
 
-        public void Remove(Item item)
+        public void Remove(Weapon item)
         {
             Inventory.Remove(item);
         }
@@ -30,10 +30,11 @@ namespace Project5
             string inv = "";
 
             inv += "Inventory------------------------------------";
-            foreach (Item i in Inventory)
+            foreach (Weapon i in Inventory)
             {
                 inv += i;
                 inv += "---------------------------------------------";
+
             }
 
             return inv;

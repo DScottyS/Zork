@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
-    public class Anduril : Item
+    public class Anduril : Weapon
     {
         public Anduril() 
         {
@@ -15,5 +15,7 @@ namespace Project5
             Weight = 1.5;
             Damage = 7;
         }
+
+
     }
 }

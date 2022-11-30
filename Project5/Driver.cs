@@ -1,18 +1,17 @@
-﻿/////////////////////////////////////////////////////////////////////////////////////////////////////////
-//                                                                                                     //
-//                                                                                                     //
-// Project: Project5                                                                                   //
-// File Name: Project5                                                                                 //
-// Description:                                                                                        //
-// Course: CSCI 1260 – Introduction to Computer Science II                                             //
-// Author: Scotty Snyder, snyderds@etsu.edu, Department of Computing, East Tennessee State University  //
-// Created: Sunday, November 27, 2022                                                                  //
-// Copyright: Scotty Snyder, 2022                                                                      //
-//                                                                                                     //
+﻿           /////////////////////////////////////////////////////////////////////////////////////////////////////////
+          //                                                                                                     //
+         //                                                                                                     //
+        // Project: Project5                                                                                   //
+       // File Name: Driver                                                                                   //
+      // Description:                                                                                        //
+     // Course: CSCI 1260 – Introduction to Computer Science II                                             //
+    // Author: Scotty Snyder, snyderds@etsu.edu, Department of Computing, East Tennessee State University  //
+   // Created: Sunday, November 27, 2022                                                                  //
+  // Copyright: Scotty Snyder, 2022                                                                      //
+ //                                                                                                     //
 /////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 using static System.Net.Mime.MediaTypeNames;
-
 using System.Xml.Linq;
 
 namespace Project5
@@ -22,76 +21,95 @@ namespace Project5
         public static void Main(string[] args)
         {
             Dungeon newDungeon = new Dungeon();
-            Console.WriteLine(newDungeon.MiddleTile());
+            newDungeon.CreateNewDungeon();
+            Console.WriteLine(newDungeon);
+
+            Console.ReadKey();
+            newDungeon.MoveEast();
+            Console.WriteLine(newDungeon);
+
+
+
+
+            /*Stick();
+            playerRucksack.Add(weapon);
+            Anduril();
+            playerRucksack.Add(weapon);
+            Console.WriteLine(playerRucksack.DisplayInventory());*/
+
         }
 
         #region Variables
-        //
-        public static Participant Monster;
-        //
-        public static Item Weapon;
+        //creates a new monster participant
+        public static Participant monster;
+        //creates a new weapon item
+        public static Weapon weapon;
+        //creates a new rucksack for the player to store their items
+        public static Rucksack playerRucksack = new Rucksack();
+        //stores the player's name
+        public static string getPlayerName;
 
         #endregion
 
         #region Methods
         public static void SpawnSkeleton()
         {
-            Monster = new Participant();
+            monster = new Participant();
 
-            Monster.ParticipantName = "Skeleton";
-            Monster.ParticipantHealth = 20;
-            Monster.ParticipantWeapon = "Short Sword";
-            Monster.ParticipantDmg = 4;
+            monster.ParticipantName = "Skeleton";
+            monster.ParticipantHealth = 20;
+            monster.ParticipantWeapon = "Short Sword";
+            monster.ParticipantDmg = 4;
         }
 
         public static void SpawnOrc()
         {
-            Monster = new Participant();
+            monster = new Participant();
 
-            Monster.ParticipantName = "Orc";
-            Monster.ParticipantHealth = 25;
-            Monster.ParticipantWeapon = "Broadsword";
-            Monster.ParticipantDmg = 5;
+            monster.ParticipantName = "Orc";
+            monster.ParticipantHealth = 25;
+            monster.ParticipantWeapon = "Broadsword";
+            monster.ParticipantDmg = 5;
         }
 
         public static void SpawnTroll()
         {
-            Monster = new Participant();
+            monster = new Participant();
 
-            Monster.ParticipantName = "Troll";
-            Monster.ParticipantHealth = 30;
-            Monster.ParticipantWeapon = "Club";
-            Monster.ParticipantDmg = 6;
+            monster.ParticipantName = "Troll";
+            monster.ParticipantHealth = 30;
+            monster.ParticipantWeapon = "Club";
+            monster.ParticipantDmg = 6;
         }
 
-        public static void Anduril() 
+        public static void Anduril()
         {
-            Weapon = new Item();
+            weapon = new Weapon();
 
-            Weapon.Name = "Anduril";
-            Weapon.Description = "A mighty sword with runes you can't quite make out etched along the length of the blade";
-            Weapon.Weight = 1.5;
-            Weapon.Damage = 7;
+            weapon.Name = "Anduril";
+            weapon.Description = "A mighty sword with runes you can't quite make out etched along the length of the blade";
+            weapon.Weight = 1.5;
+            weapon.Damage = 7;
         }
 
         public static void Dagger_of_Westernesse()
         {
-            Weapon = new Item();
+            weapon = new Weapon();
 
-            Weapon.Name = "Dagger of Westernesse";
-            Weapon.Description = "An ornate dagger with a leaf-shaped blade and a hilt of gold and red serpents";
-            Weapon.Weight = 0.5;
-            Weapon.Damage = 5;
+            weapon.Name = "Dagger of Westernesse";
+            weapon.Description = "An ornate dagger with a leaf-shaped blade and a hilt of gold and red serpents";
+            weapon.Weight = 0.5;
+            weapon.Damage = 5;
         }
 
         public static void Stick()
         {
-            Weapon = new Item();
+            weapon = new Weapon();
 
-            Weapon.Name = "Stick";
-            Weapon.Description = "It's just a stick";
-            Weapon.Weight = 0.2;
-            Weapon.Damage = 3;
+            weapon.Name = "Stick";
+            weapon.Description = "It's just a stick";
+            weapon.Weight = 0.2;
+            weapon.Damage = 3;
         }
         #endregion
     }

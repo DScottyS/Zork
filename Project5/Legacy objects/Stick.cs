@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
-    public class Stick : Item
+    public class Stick : Weapon
     {
         public Stick()
         {

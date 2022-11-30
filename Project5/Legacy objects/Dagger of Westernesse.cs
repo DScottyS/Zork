@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
-    public class Dagger_of_Westernesse : Item
+    public class Dagger_of_Westernesse : Weapon
     {
         public Dagger_of_Westernesse()
         {
