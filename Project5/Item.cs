@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
-    internal class Item
+    public class Item
     {
         //the item name
         protected string Name { get; set; }
@@ -26,7 +26,7 @@ namespace Project5
         }
 
         /// <summary>
-        /// parameterized constructor of an Item
+        /// parameterized constructor of an item
         /// </summary>
         /// <param name="name">the name of the item</param>
         /// <param name="description">the description of the item</param>

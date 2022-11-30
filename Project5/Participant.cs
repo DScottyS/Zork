@@ -19,33 +19,37 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
-    internal class Monsters
+    public class Participant
     {
-        protected string MonsterName { get; set; }
-        protected int MonsterHealth { get; set; }
-        protected int MonsterDmg { get; set; }
+        protected string ParticipantName { get; set; }
+        protected int ParticipantHealth { get; set; }
+        protected int ParticipantDmg { get; set; }
+        protected string ParticipantWeapon { get; set; }
 
-        public Monsters()
+        public Participant()
         {
-            MonsterName = "";
-            MonsterHealth = 0;
-            MonsterDmg = 0;
+            ParticipantName = "";
+            ParticipantHealth = 0;
+            ParticipantDmg = 0;
+            ParticipantWeapon = "";
         }
 
-        public Monsters(string monsterName, int monsterHealth, int monsterDmg)
+        public Participant(string participantName, int participantHealth, int participantDmg, string participantWeapon)
         {
-            MonsterName = monsterName;
-            MonsterHealth = monsterHealth;
-            MonsterDmg = monsterDmg;
+            ParticipantName = participantName;
+            ParticipantHealth = participantHealth;
+            ParticipantDmg = participantDmg;
+            ParticipantWeapon = participantWeapon;
         }
 
         public override string ToString()
         {
             string info = "";
 
-            info += $"\nA {MonsterName} has appeared!";
-            info += $"\nHP: {MonsterHealth}";
-            info += $"\nDMG: {MonsterDmg}";
+            info += $"\nA {ParticipantName} has appeared!";
+            info += $"\nHP: {ParticipantHealth}";
+            info += $"\nDMG: {ParticipantDmg}";
+            info += $"\nWPN: {ParticipantWeapon}";
 
             return info;
         }
