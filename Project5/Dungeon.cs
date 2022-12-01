@@ -3,7 +3,7 @@
          //                                                                                                     //
         // Project: Project5                                                                                   //
        // File Name: Dungeon                                                                                  //
-      // Description:                                                                                        //
+      // Description: the class where all the tiles are collected and turned into the map for the game       //
      // Course: CSCI 1260 – Introduction to Computer Science II                                             //
     // Author: Scotty Snyder, snyderds@etsu.edu, Department of Computing, East Tennessee State University  //
    // Created: Sunday, November 27, 2022                                                                  //
@@ -19,22 +19,29 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
+    /// <summary>
+    /// class where all the tiles are collected and turned into the map for the game
+    /// </summary>
     public class Dungeon : Tile
     {
+        //list of tiles that determine the dungeons size
         public List<Tile> DungeonSize;
-
+        //random object that determines the length 
         public Random NumberOfTiles = new Random();
-
+        //the actual tile the player is in
         public Tile tile;
-
+        //integer position of where the player currently is in the array of tiles
         public int CurrentTile;
-
+        //uses Tile's parameterized constructor to determine what type of tile it should be
         private string Start = "Start";
-
+        //uses Tile's parameterized constructor to determine what type of tile it should be
         private string Middle = "Middle";
-
+        //uses Tile's parameterized constructor to determine what type of tile it should be
         private string Exit = "Exit";
 
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public Dungeon() : base()
         {
             DungeonSize = new List<Tile>();
@@ -43,9 +50,13 @@ namespace Project5
             CurrentTile = 0;
         }
 
+        /// <summary>
+        /// creates a new dungeon within 5-10 tiles long, fills it with middle tiles, and adds the start and end to the beginning and
+        /// end of the list respectively
+        /// </summary>
         public void CreateNewDungeon()
         {
-            DungeonSize = new List<Tile>(new Tile[NumberOfTiles.Next(5, 9)]);
+            DungeonSize = new List<Tile>(new Tile[NumberOfTiles.Next(3, 8)]);
 
             for (int i = 0; i < DungeonSize.Count; i++)
             {
@@ -56,15 +67,30 @@ namespace Project5
             DungeonSize.Insert(0, new Tile(Start));
             DungeonSize.Add(new Tile(Exit));
         }
-
+        /// <summary>
+        /// moves the player's character to the right
+        /// </summary>
         public void MoveEast()
         {
-            DungeonSize[CurrentTile].HasPlayer = false;
-            CurrentTile++;
-            tile = DungeonSize[CurrentTile];
-            DungeonSize[CurrentTile].HasPlayer = true;
+            try
+            {
+                DungeonSize[CurrentTile].HasPlayer = false;
+                CurrentTile++;
+                tile = DungeonSize[CurrentTile];
+                DungeonSize[CurrentTile].HasPlayer = true;
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                tile = DungeonSize[CurrentTile--];
+                DungeonSize[CurrentTile].HasPlayer = false;
+                Console.WriteLine("Congratulations! You have beaten the very epic adventure game! Thank you for playing!");
+                Environment.Exit(0);
+            }
+            
         }
-
+        /// <summary>
+        /// moves the player's character to the right
+        /// </summary>
         public void MoveWest()
         {
             try
@@ -83,7 +109,10 @@ namespace Project5
             }
 
         }
-
+        /// <summary>
+        /// puts all the tiles together in one row for display purposes
+        /// </summary>
+        /// <returns>all tiles in a row</returns>
         public override string ToString()
         {
             string info = "";

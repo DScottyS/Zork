@@ -19,6 +19,7 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
+    //containts the basic parameters for weapons
     public class Weapon
     {
         //weapon name

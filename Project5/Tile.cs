@@ -2,8 +2,8 @@
           //                                                                                                     //
          //                                                                                                     //
         // Project: Project5                                                                                   //
-       // File Name: Tile                                                                                    //
-      // Description:                                                                                        //
+       // File Name: Tile                                                                                     //
+      // Description: Class dedicated to creating objects for each room the player can explore               //
      // Course: CSCI 1260 – Introduction to Computer Science II                                             //
     // Author: Scotty Snyder, snyderds@etsu.edu, Department of Computing, East Tennessee State University  //
    // Created: Sunday, November 27, 2022                                                                  //
@@ -19,16 +19,25 @@ using System.Threading.Tasks;
 
 namespace Project5
 {
+    //Class dedicated to creating objects for each room the player can explore
     public class Tile
     {
+        //determines if a tile is where the game starts
         public bool IsBeginning;
+        //determines if a tile is where the game starts
         public bool IsExit;
+        //determines if a tile contains a weapon
         public bool HasWeapon;
+        //determines if a tile contains a monster
         public bool HasMonster;
+        //determines if the player is or is not in a tile
         public bool HasPlayer;
+        //random object used for determining if a weapon or monster will be in a tile
         public Random Chance = new Random();
 
-
+        /// <summary>
+        /// default constructor
+        /// </summary>
         public Tile()
         {
             IsBeginning = false;
@@ -39,6 +48,7 @@ namespace Project5
             Chance = new Random();
         }
 
+        //parameterized constructor that tells what type of tile to make
         public Tile(string str)
         {
             if (str == "Start")
@@ -46,16 +56,7 @@ namespace Project5
                 IsBeginning = true;
                 IsExit = false;
                 HasPlayer = true;
-
-                if (Chance.Next(5) < 1)
-                {
-                    HasWeapon = true;
-                }
-                else
-                {
-                    HasWeapon = false;
-                }
-
+                HasWeapon = false;
                 HasMonster = false;
             }
             else if (str == "Middle")
@@ -107,55 +108,10 @@ namespace Project5
                 }
             }
         }
-
-        /*public Tile StartingTile()
-        {
-            IsBeginning = true;
-            IsExit = false;
-            HasPlayer = true;
-
-            if (probability.Next(5) < 1)
-            {
-                HasWeapon = true; 
-            }
-            else 
-            {
-                HasWeapon = false;
-            }
-
-            HasMonster = false;
-
-            return this;
-        }
-
-
-        public Tile FinalTile()
-        { 
-            IsBeginning = false;
-            IsExit = true;
-            HasPlayer = false;
-
-            if (probability.Next(5) < 1)
-            {
-                HasWeapon = true;
-            }
-            else
-            {
-                HasWeapon = false;
-            }
-
-            if (probability.Next(3) <= 1)
-            {
-                HasMonster = true;
-            }
-            else
-            {
-                HasMonster = false;
-            }
-
-            return this;
-        }*/
-
+        /// <summary>
+        /// converts all the information made above into "tiles" to make it easy for the user to read
+        /// </summary>
+        /// <returns>a string contaning all the tile information</returns>
         public override string ToString()
         {
             string info = "";
