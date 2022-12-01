@@ -79,11 +79,12 @@ namespace Project5
                 tile = DungeonSize[CurrentTile];
                 DungeonSize[CurrentTile].HasPlayer = true;
             }
+            //when the player moves all the way to the right, i.e. the exit tile, tells them they have completed the game and terminates the program
             catch (ArgumentOutOfRangeException)
             {
                 tile = DungeonSize[CurrentTile--];
                 DungeonSize[CurrentTile].HasPlayer = false;
-                Console.WriteLine("Congratulations! You have beaten the very epic adventure game! Thank you for playing!");
+                Console.WriteLine("Congratulations! You have beaten the Epic Adventure Game! Thank you for playing!");
                 Environment.Exit(0);
             }
             
@@ -100,12 +101,13 @@ namespace Project5
                 tile = DungeonSize[CurrentTile];
                 DungeonSize[CurrentTile].HasPlayer = true;
             }
+            //prevents the player from going west past the starting tile at index [0]
             catch (ArgumentOutOfRangeException)
             {
                 CurrentTile++;
                 tile = DungeonSize[CurrentTile];
                 DungeonSize[CurrentTile].HasPlayer = true;
-                Console.WriteLine("I can't go west any further");
+                Console.WriteLine("you cannot go west any further");
             }
 
         }
