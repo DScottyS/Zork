@@ -31,7 +31,7 @@ namespace Project5
         //determines if a tile contains a monster
         public bool HasMonster;
         //determines if the player is or is not in a tile
-        public bool HasPlayer;
+        protected bool HasPlayer;
         //random object used for determining if a weapon or monster will be in a tile
         public Random Chance = new Random();
 
