@@ -59,7 +59,7 @@ namespace Project5
         /// </summary>
         public static void Menu()
         {
-            Console.WriteLine("What would you like to do?\n\nGO EAST, GO WEST, OPEN RUCKSACK");
+            Console.WriteLine("What would you like to do?\n\nGO EAST, GO WEST, OPEN RUCKSACK, VIEW CHARACTER");
             playerChoice = Console.ReadLine();
 
             switch (playerChoice.ToLower())
@@ -78,6 +78,10 @@ namespace Project5
                     break;
                 case "open rucksack":
                     Console.WriteLine(playerRucksack.DisplayInventory());
+                    Menu();
+                    break;
+                case "view character":
+                    Console.WriteLine(player);
                     Menu();
                     break;
                 default:
@@ -285,6 +289,7 @@ namespace Project5
                 ItemSpawnRate();
                 Thread.Sleep(800);
                 PickUpWeapon();
+                if (weapon.Damage > player.ParticipantDmg) { player.ParticipantWeapon = weapon.Name; }
                 newDungeon.tile.HasWeapon = false;
                 Thread.Sleep(1500);
             }

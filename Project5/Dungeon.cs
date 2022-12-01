@@ -82,7 +82,8 @@ namespace Project5
             //when the player moves all the way to the right, i.e. the exit tile, tells them they have completed the game and terminates the program
             catch (ArgumentOutOfRangeException)
             {
-                tile = DungeonSize[CurrentTile--];
+                CurrentTile--;
+                tile = DungeonSize[CurrentTile];
                 DungeonSize[CurrentTile].HasPlayer = false;
                 Console.WriteLine("Congratulations! You have beaten the Epic Adventure Game! Thank you for playing!");
                 Environment.Exit(0);

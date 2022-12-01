@@ -31,7 +31,7 @@ namespace Project5
         //determines if a tile contains a monster
         public bool HasMonster;
         //determines if the player is or is not in a tile
-        protected bool HasPlayer;
+        public bool HasPlayer;
         //random object used for determining if a weapon or monster will be in a tile
         public Random Chance = new Random();
 
@@ -65,7 +65,7 @@ namespace Project5
                 IsExit = false;
                 HasPlayer = false;
 
-                if (Chance.Next(5) == 1)
+                if (Chance.Next(2001) <= 500)
                 {
                     HasWeapon = true;
                 }
@@ -74,7 +74,7 @@ namespace Project5
                     HasWeapon = false;
                 }
 
-                if (Chance.Next(3) == 1)
+                if (Chance.Next(1001) <= 500)
                 {
                     HasMonster = true;
                 }
@@ -89,7 +89,7 @@ namespace Project5
                 IsExit = true;
                 HasPlayer = false;
 
-                if (Chance.Next(5) == 1)
+                if (Chance.Next(2001) <= 500)
                 {
                     HasWeapon = true;
                 }
@@ -98,7 +98,7 @@ namespace Project5
                     HasWeapon = false;
                 }
 
-                if (Chance.Next(3) == 1)
+                if (Chance.Next(1001) <= 500)
                 {
                     HasMonster = true;
                 }
